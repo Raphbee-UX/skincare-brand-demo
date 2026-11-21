@@ -71,7 +71,7 @@ export default function App() {
       </section>
 
       <section className="story-section" id="story">
-        <div className="story-image"><img src="https://raw.githubusercontent.com/Raphbee-UX/skincare-brand-demo/main/Screenshot_20261120-141809.png" alt="Boss Beauty founder sharing skincare finds with her community"/></div>
+        <div className="story-image"><img src="https://raw.githubusercontent.com/Raphbee-UX/skincare-brand-demo/main/Screenshot_20261120-135347.png" alt="Boss Beauty creator presenting a product from the collection"/></div>
         <div className="story-copy"><span className="eyebrow">A NOTE FROM BOSS BEAUTY</span><h2>Beauty is personal.<br/><em>Your routine should be, too.</em></h2><p>We believe finding the right products should feel simple, welcoming and a little exciting. Boss Beauty brings together a considered mix of skincare and body-care favourites, with a real person behind every recommendation.</p><p>Take your time, explore the edit and find the things that feel right for you.</p><a href="#contact" className="text-link">A little more about us <ArrowUpRight size={16}/></a></div>
       </section>
 
