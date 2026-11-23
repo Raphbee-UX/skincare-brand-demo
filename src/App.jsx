@@ -5,8 +5,6 @@ import ProductCard from './components/ProductCard.jsx'
 import CartDrawer from './components/CartDrawer.jsx'
 import { products, categories } from './data/products.js'
 
-const money = (n) => `$${n.toFixed(2)}`
-
 export default function App() {
   const [cart, setCart] = useState([])
   const [cartOpen, setCartOpen] = useState(false)
@@ -42,7 +40,7 @@ export default function App() {
 
   return <div id="top">
     <Header count={count} onCart={() => setCartOpen(true)} onSearch={() => {setSearchOpen(true);document.getElementById('shop')?.scrollIntoView({behavior:'smooth'})}}/>
-    {searchOpen && <div className="search-panel"><Search size={18}/><input autoFocus value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search the edit..." aria-label="Search products"/><button onClick={()=>{setSearch('');setSearchOpen(false)}} aria-label="Close search"><X size={18}/></button></div>}
+    {searchOpen && <div className="search-panel" role="search" aria-label="Search the product edit"><Search size={18}/><input autoFocus value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search the edit..." aria-label="Search products"/><button onClick={()=>{setSearch('');setSearchOpen(false)}} aria-label="Close search"><X size={18}/></button></div>}
 
     <main>
       <section className="hero">
@@ -67,7 +65,7 @@ export default function App() {
         <div className="section-heading"><div><span className="eyebrow">A GOOD PLACE TO START</span><h2>Find your <em>favourites.</em></h2></div><p>Considered picks for the little moments that make up your routine.</p></div>
         <div className="shop-toolbar"><div className="filter-tabs" role="group" aria-label="Filter products">{categories.map(c=><button key={c} className={filter===c?'active':''} onClick={()=>setFilter(c)}>{c}</button>)}</div><span className="results-count">{visibleProducts.length} FINDS</span></div>
         {visibleProducts.length ? <div className="product-grid">{visibleProducts.map(p=><ProductCard key={p.id} product={p} onAdd={addToCart}/>)}</div> : <div className="no-results">No finds matched that search. Try another name.</div>}
-        <div className="catalog-note">Prototype catalogue · Product names are based on visible reference packaging. Prices are illustrative and must be confirmed with the brand.</div>
+        <div className="catalog-note">Prototype catalogue · Product names are based on reference packaging. All prices are illustrative placeholders and must be confirmed by the brand owner.</div>
       </section>
 
       <section className="story-section" id="story">
@@ -109,7 +107,7 @@ export default function App() {
       <div className="footer-bottom"><span>© 2026 BOSS BEAUTY. ALL RIGHTS RESERVED.</span><span>DESIGNED WITH CARE <i>✳</i></span><span>DEMO STOREFRONT · NOT A LIVE CHECKOUT</span></div>
     </footer>
 
-    {toast && <div className="toast"><Check size={16}/>{toast}<button onClick={()=>setCartOpen(true)}>View bag</button></div>}
+    {toast && <div className="toast" role="status" aria-live="polite"><Check size={16}/>{toast}<button onClick={()=>setCartOpen(true)}>View bag</button></div>}
     <CartDrawer open={cartOpen} items={cart} onClose={()=>setCartOpen(false)} onChange={changeQuantity} onRemove={removeItem}/>
   </div>
 }
